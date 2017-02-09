@@ -19,7 +19,7 @@
 					<a href="">Trang chính</a> | <a href="">Quản lý user</a> | <a href="">Quản lý danh mục</a> | <a href="">Quản lý tin</a>
 				</td>
 				<td align="right">
-					Xin chào  | <a href=" {{ URL::to('logout') }}">Logout</a>
+					Xin chào {!! Auth::user()->username!!} | <a href=" {{ URL::to('logout') }}">Logout</a>
 				</td>
 			</tr>
 		</table>

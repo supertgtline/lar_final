@@ -11,8 +11,13 @@ use App\User;
 class LoginController extends Controller
 {
     public function getLogin(){
-
-    	return view('admin.login.login');
+        if(!Auth::check()){
+            return view('admin.login.login');
+        }
+        else {
+            return redirect('qho_admin');
+        }
+    	
     }
     public function postLogin(LoginRequest $request)
     {
@@ -22,11 +27,15 @@ class LoginController extends Controller
     			 ];
     	if (Auth::attempt($login)) {
             // Authentication passed...
-            return redirect()->route('admin');
+            return redirect('qho_admin');
         }
         else {
         	return redirect()->back();
         }
 
+    }
+    public function getLogout(){
+        Auth::logout();
+        return redirect()->route('getLogin');
     }
 }

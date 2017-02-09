@@ -14,13 +14,31 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('login', [
+Route::get('qho_login', [
     'as' => 'getLogin', 'uses' => 'LoginController@getLogin'
 ]);
-Route::post('login', [
+Route::post('qho_login', [
     'as' => 'postLogin', 'uses' => 'LoginController@postLogin'
 ]);
-Route::get('admin',function(){});
-Route::get('admin', ['as' => 'admin', function () {
-    return view('admin.dashboard.main');
-}]);
+Route::get('logout', [
+    'as' => 'getLogout', 'uses' => 'LoginController@getLogout'
+]);
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', function ()    {
+        // Uses Auth Middleware
+    });
+
+    Route::get('user/profile', function () {
+        // Uses Auth Middleware
+    });
+    Route::group(['prefix'=>'qho_admin'],function(){
+    	Route::get('',function(){
+    		return view('admin.dashboard.main');
+    	});
+    	Route::group(['prefix'=>'category'],function(){
+    		Route::get('add',['as'=>'getAdd','uses'=>'CateController@getAdd']);
+    	});
+    });
+});
