@@ -25,7 +25,7 @@
 		</table>
 	</div>
     <div id="main">
-    	
+    	@include('admin.blocks.error')        
 		@yield('content')
 	</div>
     <div id="bottom">

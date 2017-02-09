@@ -38,7 +38,10 @@ Route::group(['middleware' => 'auth'], function () {
     		return view('admin.module.dashboard.main');
     	});
     	Route::group(['prefix'=>'category'],function(){
-    		Route::get('add',['as'=>'getAdd','uses'=>'CateController@getAdd']);
+    		Route::get('add',['as'=>'getCateAdd','uses'=>'CateController@getCateAdd']);
+            Route::post('add',['as'=>'postCateAdd','uses'=>'CateController@postCateAdd']);
+            Route::get('list',['as'=>'getCateList','uses'=>'CateController@getCateList']);
+
     	});
     });
 });
