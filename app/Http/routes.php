@@ -33,9 +33,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('user/profile', function () {
         // Uses Auth Middleware
     });
-    Route::group(['prefix'=>'qho_admin'],function(){
+    Route::group(['prefix'=>'qho_admin','namespace'=>'Admin'],function(){
     	Route::get('',function(){
-    		return view('admin.dashboard.main');
+    		return view('admin.module.dashboard.main');
     	});
     	Route::group(['prefix'=>'category'],function(){
     		Route::get('add',['as'=>'getAdd','uses'=>'CateController@getAdd']);
