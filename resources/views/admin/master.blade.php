@@ -25,12 +25,14 @@
 		</table>
 	</div>
     <div id="main">
-    	@include('admin.blocks.error')        
+    	@include('admin.blocks.flash')        
 		@yield('content')
 	</div>
     <div id="bottom">
         Copyright © 2016 
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src ="{!! asset('public/qt64_admin/templates/js/myscript.js')!!}"></script>
 </body>
 </html>

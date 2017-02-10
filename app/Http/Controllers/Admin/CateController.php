@@ -19,7 +19,7 @@ class CateController extends Controller
         $cate->parent_id = $request->sltCate;
         $cate->created_at = new DateTime();
         $cate->save();
-        return redirect()-> route('getCateList')->with(['flash_level'=>'result_message','flash_message'=>'Thêm Danh Mục Thành Công']);
+        return redirect()-> route('getCateList')->with(['flash_level'=>'result_msg','flash_message'=>'Thêm Danh Mục Thành Công']);
     }
     public function getCateList(){
     	return view('admin.module.category.list');
