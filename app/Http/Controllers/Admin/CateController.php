@@ -11,7 +11,9 @@ class CateController extends Controller
 {
     //
     public function getCateAdd(){
-    	return view('admin.module.category.add');
+        $data = Cate::select('id','name','parent_id')->get()->toArray();
+        
+    	return view('admin.module.category.add',['dataCate' => $data]);
     }public function postCateAdd(CateAddRequest $request){
     	$cate = new Cate;
         $cate->name = $request->txtCateName;
