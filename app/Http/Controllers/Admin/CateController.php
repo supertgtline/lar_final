@@ -24,6 +24,7 @@ class CateController extends Controller
         return redirect()-> route('getCateList')->with(['flash_level'=>'result_msg','flash_message'=>'Thêm Danh Mục Thành Công']);
     }
     public function getCateList(){
-    	return view('admin.module.category.list');
+        $data = Cate::select('id','name','parent_id')->get()->toArray();
+    	return view('admin.module.category.list',['dataListCate' => $data]);
     }
 }
