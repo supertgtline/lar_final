@@ -24,7 +24,7 @@ class CateAddRequest extends Request
     public function rules()
     {
         return [
-            'txtCateName' =>'required|required:qt64_category,name'
+            'txtCateName' =>'required|unique:qt64_category,name'
         ];
     }
     public function messages(){
