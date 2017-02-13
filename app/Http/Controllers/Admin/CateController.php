@@ -27,4 +27,14 @@ class CateController extends Controller
         $data = Cate::select('id','name','parent_id')->get()->toArray();
     	return view('admin.module.category.list',['dataListCate' => $data]);
     }
+    public function getCateDel($id){
+        
+        $parent = Cate::where('parent_id',$id)->count;
+        if($parent==0){
+            $cate = Cate::find($id);
+
+            $cate->delete($id);
+
+        }
+    }
 }

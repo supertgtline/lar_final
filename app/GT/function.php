@@ -17,21 +17,28 @@ function menuMulti ($data,$parent_id=0,$str="---|",$select=0)
 		
 	}
 }
-function listCate($data,$parent=0,$str="|"){
+function listCate($data,$parent=0,$str=""){
+	$stt = 0;
 	foreach ($data as $val) {
+		$stt = $stt + 1;
 		$id = $val["id"];
 		$name = $val["name"];
 		if($val["parent_id"]==$parent){
 			echo '
 		    <tr class="list_data">
-	        <td class="aligncenter">1</td>
-	        <td class="list_td alignleft">'.$str.' '.$name.'</td>
-	        <td class="list_td aligncenter">
+	        <td class="aligncenter">1</td>';
+	        if($str==""){
+	        	echo '<td class="list_td alignleft"><b>'.$str.' '.$name.'</b></td>';
+	        } else{
+	        	echo '<td class="list_td alignleft">'.$str.' '.$name.'</td>';
+	        }
+	        
+	        echo '<td class="list_td aligncenter">
 	            <a href=""><img src="../../public/qt64_admin/templates/images/edit.png" /></a>&nbsp;&nbsp;&nbsp;
 	            <a href=""><img src="../../public/qt64_admin/templates/images/delete.png" /></a>
 	        </td>
 		    </tr>';
-		    listCate($data,$id,$str." ---");
+		    listCate($data,$id,$str." ---|");
 		}
 		
 	}

@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
     		Route::get('add',['as'=>'getCateAdd','uses'=>'CateController@getCateAdd']);
             Route::post('add',['as'=>'postCateAdd','uses'=>'CateController@postCateAdd']);
             Route::get('list',['as'=>'getCateList','uses'=>'CateController@getCateList']);
+            Route::get('delete/{id}',['as'=>'getCateDel','uses'=>'CateController@getCateDel'])->where('id', '[0-9]+');;
 
     	});
     });
