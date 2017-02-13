@@ -34,8 +34,8 @@ function listCate($data,$parent=0,$str=""){
 	        }
 	        
 	        echo '<td class="list_td aligncenter">
-	            <a href=""><img src="../../public/qt64_admin/templates/images/edit.png" /></a>&nbsp;&nbsp;&nbsp;
-	            <a href=""><img src="../../public/qt64_admin/templates/images/delete.png" /></a>
+	            <a href="edit/'.$id.'"><img src="../../public/qt64_admin/templates/images/edit.png" /></a>&nbsp;&nbsp;&nbsp;
+	            <a href="delete/'.$id.'" onclick="return xacnhanxoa(\'Bạn Chắc Chắn xóa\')"><img src="../../public/qt64_admin/templates/images/delete.png" /></a>
 	        </td>
 		    </tr>';
 		    listCate($data,$id,$str." ---|");

@@ -26,13 +26,7 @@ Route::get('logout', [
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', function ()    {
-        // Uses Auth Middleware
-    });
-
-    Route::get('user/profile', function () {
-        // Uses Auth Middleware
-    });
+  
     Route::group(['prefix'=>'qho_admin','namespace'=>'Admin'],function(){
     	Route::get('',function(){
     		return view('admin.module.dashboard.main');
@@ -42,7 +36,14 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('add',['as'=>'postCateAdd','uses'=>'CateController@postCateAdd']);
             Route::get('list',['as'=>'getCateList','uses'=>'CateController@getCateList']);
             Route::get('delete/{id}',['as'=>'getCateDel','uses'=>'CateController@getCateDel'])->where('id', '[0-9]+');;
+            Route::get('edit/{id}',['as'=>'getCateEdit','uses'=>'CateController@getCateEdit'])->where('id', '[0-9]+');;
+            Route::post('edit/{id}',['as'=>'postCateEdit','uses'=>'CateController@postCateEdit'])->where('id', '[0-9]+');;
 
     	});
+        Route::group(['prefix'=>'user'],function(){
+            Route::get('add',['as'=>'getUserAdd','uses'=>'UserController@getUserAdd']);
+            Route::post('add',['as'=>'postUserAdd','uses'=>'UserController@postUserAdd']);
+            Route::get('list',['as'=>'getUserList','uses'=>'UserController@getUserList']);
+        });
     });
 });

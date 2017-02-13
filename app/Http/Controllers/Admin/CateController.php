@@ -28,13 +28,27 @@ class CateController extends Controller
     	return view('admin.module.category.list',['dataListCate' => $data]);
     }
     public function getCateDel($id){
-        
-        $parent = Cate::where('parent_id',$id)->count;
+        $parent = Cate::where('parent_id',$id)->count();
         if($parent==0){
             $cate = Cate::find($id);
 
             $cate->delete($id);
-
+            return redirect()-> route('getCateList')->with(['flash_level'=>'result_msg','flash_message'=>'Xóa Danh Mục Thành Công']);
+        }
+        else {
+            echo '<script type="text/javascript"> 
+                alert("Xin loi ban khong duoc phep xoa danh muc nay");
+                window.location ="';
+                echo route('getCateList');
+                echo '";
+            </script>';
         }
     }
+    public function getCateEdit($id){
+        return view('admin.module.category.edit');
+    }
+    public function postCateEdit($id){
+        
+    }
+    
 }

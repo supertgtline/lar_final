@@ -2,11 +2,12 @@
 @section('title','Thêm Tài Khoản')
 @section('content')
 <form action="" method="POST" style="width: 650px;">
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<fieldset>
 		<legend>Thông Tin User</legend>
 		<span class="form_label">Username:</span>
 		<span class="form_item">
-			<input type="text" name="txtUser" class="textbox" />
+			<input type="text" name="txtUser" class="textbox" value="{!! old('txtUser') !!}" />
 		</span><br />
 		<span class="form_label">Password:</span>
 		<span class="form_item">
