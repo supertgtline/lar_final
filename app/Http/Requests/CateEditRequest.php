@@ -24,7 +24,12 @@ class CateEditRequest extends Request
     public function rules()
     {
         return [
-            ''
+            'txtCateName'=> 'required'
+        ];
+    }
+    public function message(){
+        return [
+            'txtCateName.required' => ' Vui long nhập Danh Mục',
         ];
     }
 }
