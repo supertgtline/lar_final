@@ -29,4 +29,7 @@ class UserController extends Controller
         $data = User::select('id','username','level')->get()->toArray();
     	return view('admin.module.user.list',['data'=>$data]);
     }
+    public function getUserDel($id){
+
+    }
 }

@@ -13,7 +13,7 @@
 
     <?php $i++ ?>
     <tr class="list_data">
-        <td class="aligncenter">{!! $i !!}</td>
+        <td class="aligncenter">{!! $i  !!}</td>
         <td class="list_td aligncenter">{!! $item["username"] !!}</td>
         <td class="list_td aligncenter">
         @if($item["id"]==1)
@@ -26,7 +26,7 @@
         </td>
         <td class="list_td aligncenter">
             <a href=""><img src="{!! asset('public/qt64_admin/templates/images/edit.png')!!}" /></a>&nbsp;&nbsp;&nbsp;
-            <a href=""><img src="{!! asset('public/qt64_admin/templates/images/delete.png')!!}" /></a>
+            <a href="{!! route('getUserDel', ['id' => $item["id"]]); !!}"><img src="{!! asset('public/qt64_admin/templates/images/delete.png')!!}" /></a>
         </td>
     </tr>
    @endforeach()
