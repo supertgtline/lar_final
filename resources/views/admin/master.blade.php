@@ -4,6 +4,8 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="QuocTuan.Info" />
     <link rel="stylesheet" href="{!! asset('public/qt64_admin/templates/css/style.css')!!}" />
+    
+    <script type="text/javascript" src="{!! asset('public/qt64_admin/templates/js/plugin/ckeditor/ckeditor.js') !!}"></script>
 	<title>Admin Area :: @yield('title')</title>
 </head>
 

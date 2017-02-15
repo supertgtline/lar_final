@@ -49,6 +49,9 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('edit/{id}',['as'=>'postUserEdit','uses'=>'UserController@postUserEdit'])->where('id', '[0-9]+');;
         });
         Route::group(['prefix'=>'news'],function(){
+            Route::get('add',['as'=>'getNewsAdd','uses'=>'NewsController@getNewsAdd']);
+            Route::post('add',['as'=>'postNewsAdd','uses'=>'NewsController@postNewsAdd']);
+            Route::get('list',['as'=>'getNewsList','uses'=>'NewsController@getNewsList']);
 
         });
     });

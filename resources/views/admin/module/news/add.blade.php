@@ -2,6 +2,7 @@
 @section('title','Thêm Tin Tức')
 @section('content')
 <form action="" method="POST" enctype="multipart/form-data" style="width: 650px;">
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<fieldset>
 		<legend>Thông Tin Bản Tin</legend>
 		<span class="form_label">Tên danh mục:</span>
@@ -35,11 +36,29 @@
 		</span><br />
 		<span class="form_label">Trích dẫn:</span>
 		<span class="form_item">
-			<textarea name="txtIntro" rows="5" class="textbox"></textarea>
+			<textarea name="txtIntro" rows="5" class="textbox">{!! old('txtIntro') !!}</textarea>
+			<script type="text/javascript">
+				var editor = CKEDITOR.replace('txtIntro',{
+					language:'vi',
+					filebrowserImageBrowseUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/ckfinder.html?Type=Images',
+					filebrowserFlashBrowseUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/ckfinder.html?Type=Flash',
+					filebrowserImageUploadUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+					filebrowserFlashUploadUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+				});
+			</script>
 		</span><br />
 		<span class="form_label">Nội dung tin:</span>
 		<span class="form_item">
 			<textarea name="txtFull" rows="8" class="textbox"></textarea>
+			<script type="text/javascript">
+				var editor = CKEDITOR.replace('txtFull',{
+					language:'vi',
+					filebrowserImageBrowseUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/ckfinder.html?Type=Images',
+					filebrowserFlashBrowseUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/ckfinder.html?Type=Flash',
+					filebrowserImageUploadUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+					filebrowserFlashUploadUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+				});
+			</script>
 		</span><br />
 		<span class="form_label">Hình đại diện:</span>
 		<span class="form_item">

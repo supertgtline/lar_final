@@ -2,6 +2,7 @@
 @section('title','Sửa Tin Tức')
 @section('content')
 <form action="" method="POST" enctype="multipart/form-data" style="width: 650px;">
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<fieldset>
 		<legend>Thông Tin Bản Tin</legend>
 		<span class="form_label">Tên danh mục:</span>

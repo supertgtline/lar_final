@@ -35,8 +35,8 @@
         <td class="list_td aligncenter">Quốc Tuấn</td>
         <td class="list_td aligncenter">12/08/2016</td>
         <td class="list_td aligncenter">
-            <a href=""><img src="templates/images/edit.png" /></a>&nbsp;&nbsp;&nbsp;
-            <a href=""><img src="templates/images/delete.png" /></a>
+            <a href=""><img src="{!! asset('public/qt64_admin/templates/images/edit.png')!!}" /></a>&nbsp;&nbsp;&nbsp;
+            <a href=""><img src="{!! asset('public/qt64_admin/templates/images/delete.png')!!}"" /></a>
         </td>
     </tr>
 </table>
