@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Requests\UserAddRequest;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use DateTime;
+use DateTime,Auth;
 class UserController extends Controller
 {
     public function getUserAdd(){
@@ -30,6 +30,40 @@ class UserController extends Controller
     	return view('admin.module.user.list',['data'=>$data]);
     }
     public function getUserDel($id){
+        $user_current_login = Auth::user()->id;
+        $user_delete = User::find($id);
+        if($id ==1 ||($user_current_login != 1 && $user_delete["level"]==1) ){
+            return redirect()-> route('getUserList')->with(['flash_level'=>'error_msg','flash_message'=>'Bạn Không được phép xóa thành viên này']);
+        }
+        else {
+            $user_delete->delete($id);
+            return redirect()-> route('getUserList')->with(['flash_level'=>'result_msg','flash_message'=>'Xóa Thành Viên Thành Công']);
+        }
 
+    }
+    public function getUserEdit($id){
+        $data = User::findOrFail($id)->toArray();
+        if((Auth::user()->id !=1) && ($id==1 || ($data["level"]==1 && (Auth::user()->id!=$id)))){
+            return redirect()-> route('getUserList')->with(['flash_level'=>'error_msg','flash_message'=>'Bạn Không được phép sửa thành viên này']);
+        }
+        return view('admin.module.user.edit',['data'=>$data]);
+    }
+    public function postUserEdit(Request $request,$id){
+        $user = User::find($id);
+        if($request->txtPass){
+            $this->validate($request,
+                    [
+                        'txtRepass' => 'same.txtPass'
+                    ],
+                    [
+                        'txtRepass.same' => ' Hai Mật khẩu không trùn nhau'
+                    ]
+                );
+            $user->password = bcrypt($request->txtPass);
+        }
+        $user->level = $request->rdoLevel;
+        $user->updated_at = new DateTime();
+        $user->save();
+        return redirect()-> route('getUserList')->with(['flash_level'=>'result_msg','flash_message'=>'Sửa thành viên thành công']);
     }
 }

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="QuocTuan.Info" />
+    <meta name="author" content="A" />
     <link rel="stylesheet" href="{!! asset('public/qt64_admin/templates/css/style.css') !!}" />
     <title>Admin Area :: Login</title>
 </head>

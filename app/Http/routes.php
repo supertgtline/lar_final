@@ -45,6 +45,11 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('add',['as'=>'postUserAdd','uses'=>'UserController@postUserAdd']);
             Route::get('list',['as'=>'getUserList','uses'=>'UserController@getUserList']);
             Route::get('delete/{id}',['as'=>'getUserDel','uses'=>'UserController@getUserDel'])->where('id', '[0-9]+');;
+            Route::get('edit/{id}',['as'=>'getUserEdit','uses'=>'UserController@getUserEdit'])->where('id', '[0-9]+');;
+            Route::post('edit/{id}',['as'=>'postUserEdit','uses'=>'UserController@postUserEdit'])->where('id', '[0-9]+');;
+        });
+        Route::group(['prefix'=>'news'],function(){
+
         });
     });
 });

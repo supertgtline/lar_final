@@ -25,8 +25,8 @@
         @endif()
         </td>
         <td class="list_td aligncenter">
-            <a href=""><img src="{!! asset('public/qt64_admin/templates/images/edit.png')!!}" /></a>&nbsp;&nbsp;&nbsp;
-            <a href="{!! route('getUserDel', ['id' => $item["id"]]); !!}"><img src="{!! asset('public/qt64_admin/templates/images/delete.png')!!}" /></a>
+            <a href="{!! route('getUserEdit', ['id' => $item["id"]]); !!}"><img src="{!! asset('public/qt64_admin/templates/images/edit.png')!!}" /></a>&nbsp;&nbsp;&nbsp;
+            <a href="{!! route('getUserDel', ['id' => $item["id"]]); !!}" onclick="return xacnhanxoa('Bạn Chắc Chắn xóa')"><img src="{!! asset('public/qt64_admin/templates/images/delete.png')!!}" /></a>
         </td>
     </tr>
    @endforeach()
