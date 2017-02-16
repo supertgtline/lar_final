@@ -8,7 +8,7 @@
 		<span class="form_label">Tên danh mục:</span>
 		<span class="form_item">
 			<select name="sltCate" class="select">
-				<option value="none">Chọn danh mục</option>
+				<option >Chọn danh mục</option>
 					<option value="29">Chuyện lạ</option>
 					<option value="22">Giải trí</option>
 					<option value="18">Giáo dục</option>
@@ -28,11 +28,11 @@
 		</span><br />
 		<span class="form_label">Tiêu đề tin:</span>
 		<span class="form_item">
-			<input type="text" name="txtTitle" class="textbox" />
+			<input type="text" name="txtTitle" class="textbox" value="{!! old('txtTitle') !!}" />
 		</span><br />
 		<span class="form_label">Tác gỉả:</span>
 		<span class="form_item">
-			<input type="text" name="txtAuthor" class="textbox"/>
+			<input type="text" name="txtAuthor" class="textbox" value="{!! old('txtAuthor') !!}/>
 		</span><br />
 		<span class="form_label">Trích dẫn:</span>
 		<span class="form_item">
@@ -49,7 +49,7 @@
 		</span><br />
 		<span class="form_label">Nội dung tin:</span>
 		<span class="form_item">
-			<textarea name="txtFull" rows="8" class="textbox"></textarea>
+			<textarea name="txtFull" rows="8" class="textbox">{!! old('txtFull') !!}</textarea>
 			<script type="text/javascript">
 				var editor = CKEDITOR.replace('txtFull',{
 					language:'vi',

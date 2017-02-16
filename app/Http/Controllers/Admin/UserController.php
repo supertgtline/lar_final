@@ -56,7 +56,7 @@ class UserController extends Controller
                         'txtRepass' => 'same.txtPass'
                     ],
                     [
-                        'txtRepass.same' => ' Hai Mật khẩu không trùn nhau'
+                        'txtRepass.same' => ' Hai Mật khẩu không trùng nhau'
                     ]
                 );
             $user->password = bcrypt($request->txtPass);
