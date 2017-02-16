@@ -26,7 +26,7 @@ function listCate($data,$parent=0,$str=""){
 		if($val["parent_id"]==$parent){
 			echo '
 		    <tr class="list_data">
-	        <td class="aligncenter">1</td>';
+	        <td class="aligncenter">'.$stt.'</td>';
 	        if($str==""){
 	        	echo '<td class="list_td alignleft"><b>'.$str.' '.$name.'</b></td>';
 	        } else{

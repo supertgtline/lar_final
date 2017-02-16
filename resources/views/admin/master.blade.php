@@ -18,7 +18,7 @@
 		<table width="100%">
 			<tr>
 				<td>
-					<a href="">Trang chính</a> | <a href="">Quản lý user</a> | <a href="">Quản lý danh mục</a> | <a href="">Quản lý tin</a>
+					<a href="{!! url('/qho_admin') !!}">Trang chính</a> | <a href="{!! route('getUserList') !!}">Quản lý user</a> | <a href="{!! route('getCateList') !!}">Quản lý danh mục</a> | <a href="{!! route('getNewsList') !!}">Quản lý tin</a>
 				</td>
 				<td align="right">
 					Xin chào {!! Auth::user()->username!!} | <a href=" {{ URL::to('logout') }}">Logout</a>

@@ -8,22 +8,8 @@
 		<span class="form_label">Tên danh mục:</span>
 		<span class="form_item">
 			<select name="sltCate" class="select">
-				<option >Chọn danh mục</option>
-					<option value="29">Chuyện lạ</option>
-					<option value="22">Giải trí</option>
-					<option value="18">Giáo dục</option>
-					<option value="20">Kinh doanh</option>
-					<option value="19">Nhân ái</option>
-					<option value="24">Nhịp sống trẻ</option>
-					<option value="23">Pháp luật</option>
-					<option value="28">Sự kiện</option>
-					<option value="26">Sức khỏe</option>
-					<option value="27">Sức mạnh số</option>
-					<option value="16">Thế giới</option>
-					<option value="17">Thể thao</option>
-					<option value="25">Tình yêu</option>
-					<option value="21">Văn hóa</option>
-					<option value="15">Xã hội</option>
+				<option value="{!! old('sltCate') !!}">Chọn danh mục</option>
+					<?php menuMulti ($cate,$parent_id=0,$str="---|",old('sltCate')) ?>
 			</select>
 		</span><br />
 		<span class="form_label">Tiêu đề tin:</span>
@@ -32,7 +18,7 @@
 		</span><br />
 		<span class="form_label">Tác gỉả:</span>
 		<span class="form_item">
-			<input type="text" name="txtAuthor" class="textbox" value="{!! old('txtAuthor') !!}/>
+			<input type="text" name="txtAuthor" class="textbox" value="{!! old('txtAuthor') !!}"/>
 		</span><br />
 		<span class="form_label">Trích dẫn:</span>
 		<span class="form_item">
@@ -66,8 +52,18 @@
 		</span><br />
 		<span class="form_label">Công bố tin:</span>
 		<span class="form_item">
-			<input type="radio" name="rdoPublic" value="Y" checked="checked" /> Có 
-			<input type="radio" name="rdoPublic" value="N" /> Không
+			<input type="radio" name="rdoPublic" value="1" checked="checked"
+			@if(old('rdoPublic')=="1"){
+				checked
+			}
+			@endif
+			 /> Có 
+			<input type="radio" name="rdoPublic" value="0" 
+			@if(old('rdoPublic')=="0"){
+				checked
+			}
+			@endif
+			/> Không
 		</span><br />
 		<span class="form_label"></span>
 		<span class="form_item">

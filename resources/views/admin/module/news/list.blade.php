@@ -9,35 +9,25 @@
         <td>Thời Gian</td>
         <td class="action_col">Quản lý?</td>
     </tr>
+    <?php $stt = 0;?>
+    @foreach($news as $item)
+    <?php $stt++?>
     <tr class="list_data">
-        <td class="aligncenter">1</td>
-        <td class="list_td aligncenter">Hàng chục người tháo chạy khi voi xông ra đường</td>
-        <td class="list_td aligncenter">Quốc Tuấn</td>
-        <td class="list_td aligncenter">12/08/2016</td>
+        <td class="aligncenter">{!! $stt !!}</td>
+        <td class="list_td aligncenter">{!! $item["title"] !!}</td>
+        <td class="list_td aligncenter">{!! $item["title"] !!}</td>
         <td class="list_td aligncenter">
-            <a href=""><img src="templates/images/edit.png" /></a>&nbsp;&nbsp;&nbsp;
-            <a href=""><img src="templates/images/delete.png" /></a>
+
+        <?php \Carbon\Carbon::setLocale('vi'); 
+        
+        ?>
+
+        {!! \Carbon\Carbon::createFromTimeStamp(strtotime($item["created_at"]))->diffForHumans() !!}</td>
+        <td class="list_td aligncenter">
+            <a href="{!! route('getNewsEdit', ['id' => $item["id"]]); !!}"><img src="{!! asset('public/qt64_admin/templates/images/edit.png')!!}" /></a>&nbsp;&nbsp;&nbsp;
+             <a href="{!! route('getNewsDel', ['id' => $item["id"]]); !!}" onclick="return xacnhanxoa('Bạn Chắc Chắn xóa')"><img src="{!! asset('public/qt64_admin/templates/images/delete.png')!!}" /></a>
         </td>
     </tr>
-    <tr class="list_data">
-        <td class="aligncenter">2</td>
-        <td class="list_td aligncenter">Hàng chục người tháo chạy khi voi xông ra đường</td>
-        <td class="list_td aligncenter">Quốc Tuấn</td>
-        <td class="list_td aligncenter">12/08/2016</td>
-        <td class="list_td aligncenter">
-            <a href=""><img src="templates/images/edit.png" /></a>&nbsp;&nbsp;&nbsp;
-            <a href=""><img src="templates/images/delete.png" /></a>
-        </td>
-    </tr>
-    <tr class="list_data">
-        <td class="aligncenter">3</td>
-        <td class="list_td aligncenter">Hàng chục người tháo chạy khi voi xông ra đường</td>
-        <td class="list_td aligncenter">Quốc Tuấn</td>
-        <td class="list_td aligncenter">12/08/2016</td>
-        <td class="list_td aligncenter">
-            <a href=""><img src="{!! asset('public/qt64_admin/templates/images/edit.png')!!}" /></a>&nbsp;&nbsp;&nbsp;
-            <a href=""><img src="{!! asset('public/qt64_admin/templates/images/delete.png')!!}"" /></a>
-        </td>
-    </tr>
+     @endforeach
 </table>
 @endsection
