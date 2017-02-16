@@ -35,7 +35,7 @@ class NewsAddRequest extends Request
     }
     public function messages(){
         return [
-            'sltCate.reuired' => 'Vui long chon danh muc',
+            'sltCate.required' => 'Vui long chon danh muc',
             'txtTitle.required' => 'Vui long nhap Title',
             'txtTitle.unique' => 'Tieu de nay da ton tai',
             'txtAuthor.required' => 'Vui lòng chọn Author',

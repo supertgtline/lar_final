@@ -8,43 +8,49 @@
 		<span class="form_label">Tên danh mục:</span>
 		<span class="form_item">
 			<select name="sltCate" class="select">
-				<option value="none">Chọn danh mục</option>
-					<option value="29">Chuyện lạ</option>
-					<option value="22">Giải trí</option>
-					<option value="18">Giáo dục</option>
-					<option value="20">Kinh doanh</option>
-					<option value="19">Nhân ái</option>
-					<option value="24">Nhịp sống trẻ</option>
-					<option value="23">Pháp luật</option>
-					<option value="28">Sự kiện</option>
-					<option value="26">Sức khỏe</option>
-					<option value="27">Sức mạnh số</option>
-					<option value="16">Thế giới</option>
-					<option value="17">Thể thao</option>
-					<option value="25">Tình yêu</option>
-					<option value="21">Văn hóa</option>
-					<option value="15">Xã hội</option>
+				<option value="">Chọn danh mục</option>
+					<?php menuMulti ($data_cate,0,$str="---|",$data_news["category_id"]) ?>
 			</select>
 		</span><br />
 		<span class="form_label">Tiêu đề tin:</span>
 		<span class="form_item">
-			<input type="text" name="txtTitle" class="textbox" />
+			<input type="text" name="txtTitle" class="textbox" value="{!! old('txtTitle',isset($data_news["title"])?$data_news["title"]:null) !!}" />
 		</span><br />
 		<span class="form_label">Tác gỉả:</span>
 		<span class="form_item">
-			<input type="text" name="txtAuthor" class="textbox"/>
+			<input type="text" name="txtAuthor" class="textbox" value="{!! old('txtAuthor',isset($data_news["author"])?$data_news["author"]:null) !!}"/>
 		</span><br />
 		<span class="form_label">Trích dẫn:</span>
 		<span class="form_item">
-			<textarea name="txtIntro" rows="5" class="textbox"></textarea>
+			<textarea name="txtIntro" rows="5" class="textbox">{!! old('txtIntro',isset($data_news["intro"])?$data_news["intro"]:null) !!}</textarea>
+			<script type="text/javascript">
+				var editor = CKEDITOR.replace('txtIntro',{
+					language:'vi',
+					filebrowserImageBrowseUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/ckfinder.html?Type=Images',
+					filebrowserFlashBrowseUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/ckfinder.html?Type=Flash',
+					filebrowserImageUploadUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+					filebrowserFlashUploadUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+				});
+			</script>
 		</span><br />
 		<span class="form_label">Nội dung tin:</span>
 		<span class="form_item">
-			<textarea name="txtFull" rows="8" class="textbox"></textarea>
+			<textarea name="txtFull" rows="8" class="textbox">{!! old('txtFull',isset($data_news["full"])?$data_news["full"]:null) !!}</textarea>
+			<script type="text/javascript">
+				var editor = CKEDITOR.replace('txtFull',{
+					language:'vi',
+					filebrowserImageBrowseUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/ckfinder.html?Type=Images',
+					filebrowserFlashBrowseUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/ckfinder.html?Type=Flash',
+					filebrowserImageUploadUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+					filebrowserFlashUploadUrl : '../../public/qt64_admin/templates/js/plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+				});
+			</script>
 		</span><br />
 		<span class="form_label">Hình hiện tại:</span>
 		<span class="form_item">
-			<img src="templates/images/nophoto.png" width="100px" />
+		
+			<img src="{!! isset($data_news["image"])? asset('public/uploads/news/'.$data_news["image"]): asset('public/qt64_admin/templates/images/nophoto.png')!!}" width="100px" />
+			<input type="hidden" name="fImageCurrent" value="{!! ($data_news["image"])!!}" />
 		</span><br />
 		<span class="form_label">Hình đại diện:</span>
 		<span class="form_item">
@@ -52,8 +58,19 @@
 		</span><br />
 		<span class="form_label">Công bố tin:</span>
 		<span class="form_item">
-			<input type="radio" name="rdoPublic" value="Y" checked="checked" /> Có 
-			<input type="radio" name="rdoPublic" value="N" /> Không
+			<input type="radio" name="rdoPublic" value="1" 
+			@if($data_news["status"]== 1){
+				checked
+			}
+			@endif
+			/> Có 
+			<input type="radio" name="rdoPublic" value="0"
+
+			@if($data_news["status"] == 0){
+				checked
+			}
+			@endif
+			 /> Không
 		</span><br />
 		<span class="form_label"></span>
 		<span class="form_item">

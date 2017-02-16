@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NewsAddRequest;
+use App\Http\Requests\NewsEditRequest;
 use App\Models\Cate;
 use App\Models\News;
 use Auth,DateTime,File;
@@ -49,18 +50,45 @@ class NewsController extends Controller
     }
     public function getNewsDel($id){
         $news = News::findOrFail($id);
-        echo public_path()."/uploads/news/".$news->image;
-        if(file_exists(public_path()."/uploads/news/".$news->image)){
-            File::delete(public_path()."/uploads/news/".$news->image);
+        if(file_exists(public_path().'/uploads/news/'.$news->image)){
+            File::delete(public_path().'/uploads/news/'.$news->image);
         }
          $news->delete();
          return redirect()-> route('getNewsList')->with(['flash_level'=>'result_msg','flash_message'=>'Xoa Tin Tức Thành Công']);
     }
     public function getNewsEdit($id){
-        return view('admin.module.news.edit');
+         $news = News::findOrFail($id);
+         $cate = Cate::select('id','name','parent_id')->get()->toArray();
+        return view('admin.module.news.edit',["data_news"=>$news,'data_cate'=>$cate]);
         
     }
-    public function postNewsEdit($id){
+    public function postNewsEdit(NewsEditRequest $request,$id){
+        $news = News::findOrFail($id);
+         $file = $request->file('newsImg');
+        $news->title =$request->txtTitle;
+        $news->alias = str_slug($request->txtTitle,"-");
+        $news->author =$request->txtAuthor;
+        $news->intro = $request->txtIntro;
+        $news->full=$request->txtFull;
+        if(strlen($file) > 0){
+            $fImageCurrent = $request->fImageCurrent;
+             if(file_exists(public_path().'/uploads/news/'.$fImageCurrent)){
+            File::delete(public_path().'/uploads/news/'.$fImageCurrent);
+        }
+            $filename = time().'.'.$file->getClientOriginalName();
+            $destinationPath = 'public/uploads/news';
+            $file->move($destinationPath,$filename);
+            $news->image=$filename;
+        }
+        
+        $news->status=$request->rdoPublic;
+        $news->category_id=$request->sltCate;
+        $news->users_id = Auth::user()->id;
+        $news->updated_at = new DateTime();
+        $news->save();
+
+        return redirect()-> route('getNewsList')->with(['flash_level'=>'result_msg','flash_message'=>'Sửa Tin Tức Thành Công']);
+
         
     }
 }
