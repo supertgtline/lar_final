@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class News extends Model
 {
     protected $table = 'qt64_news';
@@ -12,7 +13,7 @@ class News extends Model
     {
         return $this->belongsTo('App\Model\Cate');
     }
-    public function news()
+    public function user()
     {
         return $this->belongsTo('App\Model\User');
     }

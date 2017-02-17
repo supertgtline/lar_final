@@ -10,13 +10,13 @@ git<?php
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix'=>'/','namespace'=>'User'],function(){
+Route::get('/', ['as' => 'getIndex', 'uses' => 'MainController@getIndex']);
+Route::get('cate', ['as' => 'getCate', 'uses' => 'MainController@getCate']);
+Route::get('detail', ['as' => 'getDetail', 'uses' => 'MainController@getDetail']);
 });
-Route::get('qho_login', [
-    'as' => 'getLogin', 'uses' => 'LoginController@getLogin'
-]);
+
+Route::get('qho_login', ['as' => 'getLogin', 'uses' => 'LoginController@getLogin']);
 Route::post('qho_login', [
     'as' => 'postLogin', 'uses' => 'LoginController@postLogin'
 ]);
