@@ -12,8 +12,8 @@
 */
 Route::group(['prefix'=>'/','namespace'=>'User'],function(){
 Route::get('/', ['as' => 'getIndex', 'uses' => 'MainController@getIndex']);
-Route::get('cate', ['as' => 'getCate', 'uses' => 'MainController@getCate']);
-Route::get('detail', ['as' => 'getDetail', 'uses' => 'MainController@getDetail']);
+Route::get('the-loai/{id}/{alias}', ['as' => 'getCate', 'uses' => 'MainController@getCate'])->where('id', '[0-9]+');;
+Route::get('chi-tiet/{id}/{alias}', ['as' => 'getDetail', 'uses' => 'MainController@getDetail'])->where('id', '[0-9]+');;
 });
 
 Route::get('qho_login', ['as' => 'getLogin', 'uses' => 'LoginController@getLogin']);
