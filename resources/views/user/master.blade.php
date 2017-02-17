@@ -18,6 +18,8 @@
                 @foreach( $cate as $item)
                 @if($item["parent_id"]==0)
                 <li><a href="{!! url('the-loai/'.$item["id"].'/'.$item["slug"])!!}">{!! $item["name"] !!}</a>
+                <?php subMenu($cate,$item["id"]); ?>
+                </li>
                 @endif
                 @endforeach()
             </ul>

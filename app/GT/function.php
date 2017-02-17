@@ -43,4 +43,17 @@ function listCate($data,$parent=0,$str=""){
 		
 	}
 }
+function subMenu($data,$id){
+	echo "<ul>";
+	foreach ($data as $item) {
+		if($item["parent_id"] == $id){
+			echo '<li><a href="../../the-loai/'.$item["id"].'/'.$item["slug"].'">'.$item["name"].'</a>';
+			subMenu($data,$item["id"]);
+			echo '</li>';
+		}
+		
+	}
+	echo "</ul>";
+
+}
 ?>
