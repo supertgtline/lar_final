@@ -11,10 +11,10 @@ class News extends Model
     protected $guarded = [];
     public function cate()
     {
-        return $this->belongsTo('App\Model\Cate');
+        return $this->belongsTo('App\Models\Cate','category_id');
     }
     public function user()
     {
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo('App\Models\User');
     }
 }
