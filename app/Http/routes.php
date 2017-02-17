@@ -1,4 +1,4 @@
-<?php
+git<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +28,13 @@ Route::get('logout', [
 Route::group(['middleware' => 'auth'], function () {
   
     Route::group(['prefix'=>'qho_admin','namespace'=>'Admin'],function(){
-    	Route::get('',function(){
-    		return view('admin.module.dashboard.main');
+    	Route::get('/',function(){
+            $sta_user = DB::table('qt64_users')->count();
+            $sta_category = DB::table('qt64_category')->count();
+            $sta_news = DB::table('qt64_news')->count();
+    		return view('admin.module.dashboard.main',['sta_user'=>$sta_user,'sta_category'=>$sta_category,'sta_news'=>$sta_news]);
     	});
+        
     	Route::group(['prefix'=>'category'],function(){
     		Route::get('add',['as'=>'getCateAdd','uses'=>'CateController@getCateAdd']);
             Route::post('add',['as'=>'postCateAdd','uses'=>'CateController@postCateAdd']);
