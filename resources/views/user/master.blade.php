@@ -14,8 +14,8 @@
         <div id="topmenu">
             <ul>
                 <li><a href="">Trang Chủ</a></li>
-               
-                @foreach(App\Models\Cate::select('id','name','parent_id','slug')->get->toArray() as $item)
+                <?php $cate = App\Models\Cate::select('id','name','parent_id','slug')->get()->toArray();?>
+                @foreach( $cate as $item)
                 @if($item["parent_id"]==0)
                 <li><a href="{!! url('the-loai/'.$item["id"].'/'.$item["slug"])!!}">{!! $item["name"] !!}</a>
                 @endif
@@ -62,7 +62,7 @@
             <div class="clearfix"></div>
         </div>
         <div id="bottom">
-            Copyright &copy; 2016 by QuocTuan.Info & QHOnline.Edu.Vn
+            Copyright &copy; 2016
         </div>
     </div>
 </body>
