@@ -2,6 +2,7 @@
 @section('title','Trang Chính')
 @section('content')
 <table class="function_table" style="margin: 0px auto;">
+ <input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<tr>
 		<td class="function_item user_add"><a href="{!! route('getUserAdd') !!}">Thêm user</a></td>
 		<td class="function_item user_list"><a href="{!! route('getUserList') !!}">Quản lý user</a></td>
