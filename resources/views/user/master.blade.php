@@ -14,13 +14,8 @@
         <div id="topmenu">
             <ul>
                 <li><a href="">Trang Chủ</a></li>
-<<<<<<< HEAD
                <?php $cate  =  App\Models\Cate::select('id','name','parent_id','slug')->get()->toArray();?>
                 @foreach($cate as $item)
-=======
-                <?php $cate = App\Models\Cate::select('id','name','parent_id','slug')->get()->toArray();?>
-                @foreach( $cate as $item)
->>>>>>> 007efe0a8fcf8a248568052e5e4519dc5b648e52
                 @if($item["parent_id"]==0)
                 <li><a href="{!! url('the-loai/'.$item["id"].'/'.$item["slug"])!!}">{!! $item["name"] !!}</a>
                 <?php subMenu($cate,$item["id"]); ?>

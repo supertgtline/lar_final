@@ -16,6 +16,12 @@ Route::get('the-loai/{id}/{alias}', ['as' => 'getCate', 'uses' => 'MainControlle
 Route::get('chi-tiet/{id}/{alias}', ['as' => 'getDetail', 'uses' => 'MainController@getDetail'])->where('id', '[0-9]+');;
 });
 
+Route::group(['prefix'=>'/en','namespace'=>'User'],function(){
+Route::get('/', ['as' => 'getIndex', 'uses' => 'MainController@getIndex']);
+Route::get('category/{id}/{alias}', ['as' => 'getCate', 'uses' => 'MainController@getCate'])->where('id', '[0-9]+');;
+Route::get('detail/{id}/{alias}', ['as' => 'getDetail', 'uses' => 'MainController@getDetail'])->where('id', '[0-9]+');;
+});
+
 Route::get('qho_login', ['as' => 'getLogin', 'uses' => 'LoginController@getLogin']);
 Route::post('qho_login', [
     'as' => 'postLogin', 'uses' => 'LoginController@postLogin'
