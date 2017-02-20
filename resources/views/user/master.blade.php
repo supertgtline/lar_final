@@ -32,29 +32,14 @@
                     </h1>
                     <ul>
                         <li><a href="">Trang Chủ</a></li>
-                        <li><a href="#">Giới Thiệu</a></li>
-                        <li><a href="#">Tin Tức</a>
-                            <ul>
-                                <li><a href="">Chuyện lạ</a></li>
-                                <li><a href="">Giải trí</a></li>
-                                <li><a href="">Giáo dục</a></li>
-                                <li><a href="">Kinh doanh</a></li>
-                                <li><a href="">Nhân ái</a></li>
-                                <li><a href="">Nhịp sống trẻ</a></li>
-                                <li><a href="">Pháp luật</a></li>
-                                <li><a href="">Sự kiện</a></li>
-                                <li><a href="">Sức khỏe</a></li>
-                                <li><a href="">Sức mạnh số</a></li>
-                                <li><a href="">Thế giới</a></li>
-                                <li><a href="">Thể thao</a></li>
-                                <li><a href="">Tình yêu</a></li>
-                                <li><a href="">Văn hóa</a></li>
-                                <li><a href="">Xã hội</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Dịch Vụ</a></li>
-                        <li><a href="#">Sản Phẩm</a></li>
-                        <li><a href="#">Liên Hệ</a></li>
+                        <?php $cate = App\Models\Cate::select('id','name','parent_id','slug')->get()->toArray();?>
+                @foreach( $cate as $item)
+                @if($item["parent_id"]==0)
+                <li><a href="{!! url('the-loai/'.$item["id"].'/'.$item["slug"])!!}">{!! $item["name"] !!}</a>
+                <?php subMenu($cate,$item["id"]); ?>
+                </li>
+                @endif
+                @endforeach()
                     </ul>
                 </div>
             </div>

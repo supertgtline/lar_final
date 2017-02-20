@@ -51,9 +51,7 @@ function subMenu($data,$id){
 			subMenu($data,$item["id"]);
 			echo '</li>';
 		}
-		
 	}
 	echo "</ul>";
-
 }
 ?>
